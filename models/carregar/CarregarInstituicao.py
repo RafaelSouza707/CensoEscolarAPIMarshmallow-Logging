@@ -11,8 +11,6 @@ def carregarInstituicao(CAMINHO_INSTITUICOES):
     instituicoes = []
     with open(CAMINHO_INSTITUICOES, "r", encoding="latin1") as f:
         leitor = csv.DictReader(f, delimiter=';')
-        #print("Verificar Nomes: ")
-        #print(leitor.fieldnames)
 
         for linha in leitor:
             codigo = linha.get("CO_ENTIDADE")

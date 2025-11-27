@@ -1,0 +1,47 @@
+2025-11-27 08:44:22,125 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 08:44:22,131 - werkzeug - INFO -  * Debugger PIN: 348-040-456
+2025-11-27 08:59:01,861 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-11-27 08:59:01,863 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-27 08:59:01,863 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 08:59:02,169 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 08:59:02,169 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 08:59:24,601 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2025 08:59:24] "GET /instituicoesensino HTTP/1.1" 200 -
+2025-11-27 08:59:55,703 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\logging_config.py', reloading
+2025-11-27 08:59:55,759 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 08:59:56,082 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 08:59:56,082 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:02:48,691 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:02:48,751 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:02:49,299 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:02:49,299 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:04:53,408 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:04:53,453 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:04:53,812 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:04:53,818 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:05:11,636 - app - INFO - Falha na requisição: instituição não localizada...
+2025-11-27 09:05:11,636 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2025 09:05:11] "[33mGET /instituicoesensino/2100204 HTTP/1.1[0m" 404 -
+2025-11-27 09:07:15,098 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:07:15,140 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:07:15,476 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:07:15,476 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:07:25,600 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:07:25,639 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:07:25,997 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:07:26,003 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:08:00,323 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:08:00,378 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:08:00,715 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:08:00,720 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:09:00,292 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:09:00,339 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:09:00,649 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:09:00,654 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:09:02,701 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:09:02,756 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:09:03,071 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:09:03,077 - werkzeug - INFO -  * Debugger PIN: 493-414-045
+2025-11-27 09:09:08,135 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-11-27 09:09:08,196 - werkzeug - INFO -  * Restarting with stat
+2025-11-27 09:09:08,477 - werkzeug - WARNING -  * Debugger is active!
+2025-11-27 09:09:08,493 - werkzeug - INFO -  * Debugger PIN: 493-414-045

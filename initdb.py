@@ -2,7 +2,7 @@ import sqlite3
 from models.carregar.CarregarInstituicao import carregarInstituicao
 
 DATABASE_NAME = "censoescolar.db"
-CAMINHO_INSTITUICOES = "data/microdados_ed_basica_2024.csv"
+CAMINHO_INSTITUICOES = "data/microdados_ed_basica_2023.csv"
 SCHEMA_FILE = "schema.sql"
 
 def create_tables():
