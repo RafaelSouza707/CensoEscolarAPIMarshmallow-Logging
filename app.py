@@ -2,10 +2,14 @@ from flask import Flask, request, jsonify
 import sqlite3
 import math
 from logging_config import logger
+from marshmallow import ValidationError
+from models.schemas.instituicao_schema import InstituicaoUpdateSchema, InstituicaoCreateSchema
 
 app = Flask(__name__)
 DATABASE = "censoescolar.db"
 
+def get_conn():
+    return sqlite3.connect(DATABASE)
 
 # Rota inicial
 @app.get("/")
@@ -62,42 +66,74 @@ def getInstituicaoByCodigo(codigo: str):
 
 @app.post("/instituicoesensino")
 def addInstituicao():
+    logger.info("Requisição para criação de uma nova instituição.")
+
     data = request.json
 
-    campos_obrigatorios = [
-        "codigo", "nome", "co_uf", "co_municipio",
-        "qt_mat_bas", "qt_mat_prof", "qt_mat_eja", "qt_mat_esp",
-        "qt_mat_fund", "qt_mat_inf", "qt_mat_med",
-        "qt_mat_zr_na", "qt_mat_zr_rur", "qt_mat_zr_urb"
-    ]
+    if not data:
+        logger.warning("Nenhum JSON enviado.")
+        return jsonify({"erro": "JSON não enviado"}), 400
 
-    # Verifica campos faltando
-    for campo in campos_obrigatorios:
-        if campo not in data:
-            return jsonify({"erro": f"Campo obrigatório faltando: {campo}"}), 400
+    schema = InstituicaoCreateSchema()
+
+    try:
+        dados_validados = schema.load(data)
+    except ValidationError as err:
+        logger.warning(f"Erro de validação: {err.messages}")
+        return jsonify({"erro": err.messages}), 400
 
     conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
 
     try:
         cursor.execute("""
-            INSERT INTO tb_instituicao
-            (codigo, nome, co_uf, co_municipio,
-             qt_mat_bas, qt_mat_prof, qt_mat_eja, qt_mat_esp,
-             qt_mat_fund, qt_mat_inf, qt_mat_med,
-             qt_mat_zr_na, qt_mat_zr_rur, qt_mat_zr_urb)
-            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            INSERT INTO tb_instituicao(
+                codigo, nome,
+                no_entidade, co_entidade,
+                co_regiao, no_regiao,
+                co_uf, sg_uf,
+                co_municipio,
+                no_mesorregiao, co_mesorregiao,
+                no_microrregiao, co_microrregiao,
+                nu_ano_censo,
+                qt_mat_bas, qt_mat_prof, qt_mat_eja, qt_mat_esp,
+                qt_mat_fund, qt_mat_inf, qt_mat_med,
+                qt_mat_zr_na, qt_mat_zr_rur, qt_mat_zr_urb,
+                qt_mat_total
+            )
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         """, (
-            data["codigo"], data["nome"], data["co_uf"], data["co_municipio"],
-            data["qt_mat_bas"], data["qt_mat_prof"], data["qt_mat_eja"], data["qt_mat_esp"],
-            data["qt_mat_fund"], data["qt_mat_inf"], data["qt_mat_med"],
-            data["qt_mat_zr_na"], data["qt_mat_zr_rur"], data["qt_mat_zr_urb"]
+            dados_validados["codigo"],
+            dados_validados["nome"],
+            dados_validados["no_entidade"],
+            dados_validados["co_entidade"],
+            dados_validados["co_regiao"],
+            dados_validados["no_regiao"],
+            dados_validados["co_uf"],
+            dados_validados["sg_uf"],
+            dados_validados["co_municipio"],
+            dados_validados["no_mesorregiao"],
+            dados_validados["co_mesorregiao"],
+            dados_validados["no_microrregiao"],
+            dados_validados["co_microrregiao"],
+            dados_validados["nu_ano_censo"],
+            dados_validados["qt_mat_bas"],
+            dados_validados["qt_mat_prof"],
+            dados_validados["qt_mat_eja"],
+            dados_validados["qt_mat_esp"],
+            dados_validados["qt_mat_fund"],
+            dados_validados["qt_mat_inf"],
+            dados_validados["qt_mat_med"],
+            dados_validados["qt_mat_zr_na"],
+            dados_validados["qt_mat_zr_rur"],
+            dados_validados["qt_mat_zr_urb"],
+            dados_validados["qt_mat_total"]
         ))
 
         conn.commit()
         novo_id = cursor.lastrowid
-        logger.info("Instituição criada com sucesso.")
 
+        logger.info("Instituição criada com sucesso.")
         return jsonify({"mensagem": "Instituição cadastrada", "id": novo_id}), 201
 
     except Exception as e:
@@ -106,45 +142,63 @@ def addInstituicao():
 
     finally:
         conn.close()
-
+        
 
 @app.put("/instituicoesensino/<codigo>")
 def updateInstituicao(codigo):
+    logger.info(f"Requisição PUT para atualizar instituição {codigo}")
     data = request.json
 
-    conn = sqlite3.connect(DATABASE)
+    schema = InstituicaoUpdateSchema()
+    try:
+        dados_validados = schema.load(data)
+    except ValidationError as err:
+        logger.warning(f"Erro de validação no PUT: {err.messages}")
+        return jsonify({"erro": "Dados inválidos", "detalhes": err.messages}), 400
+
+    conn = get_conn()
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute("SELECT id FROM tb_instituicao WHERE codigo = ?", (codigo,))
-    linha = cursor.fetchone()
+    cursor.execute("SELECT * FROM tb_instituicao WHERE codigo = ?", (codigo,))
+    registro = cursor.fetchone()
 
-    if linha is None:
+    if registro is None:
         conn.close()
         return jsonify({"erro": "Instituição não encontrada"}), 404
 
+    registro_dict = dict(registro)
+
     try:
-        cursor.execute("""
-            UPDATE tb_instituicao SET
-                nome = ?, co_uf = ?, co_municipio = ?,
-                qt_mat_bas = ?, qt_mat_prof = ?, qt_mat_eja = ?, qt_mat_esp = ?,
-                qt_mat_fund = ?, qt_mat_inf = ?, qt_mat_med = ?,
-                qt_mat_zr_na = ?, qt_mat_zr_rur = ?, qt_mat_zr_urb = ?
-            WHERE codigo = ?
-        """, (
-            data.get("nome"), data.get("co_uf"), data.get("co_municipio"),
-            data.get("qt_mat_bas"), data.get("qt_mat_prof"), data.get("qt_mat_eja"), data.get("qt_mat_esp"),
-            data.get("qt_mat_fund"), data.get("qt_mat_inf"), data.get("qt_mat_med"),
-            data.get("qt_mat_zr_na"), data.get("qt_mat_zr_rur"), data.get("qt_mat_zr_urb"),
-            codigo
-        ))
+        campos_matriculas = [
+            "qt_mat_bas", "qt_mat_prof", "qt_mat_eja", "qt_mat_esp",
+            "qt_mat_fund", "qt_mat_inf", "qt_mat_med",
+            "qt_mat_zr_na", "qt_mat_zr_rur", "qt_mat_zr_urb"
+        ]
+
+        if any(campo in dados_validados for campo in campos_matriculas):
+            novo_total = 0
+            for campo in campos_matriculas:
+                valor = dados_validados.get(campo, registro_dict[campo])
+                novo_total += int(valor or 0)
+            dados_validados["qt_mat_total"] = novo_total
+
+        campos_update = ", ".join([f"{campo} = ?" for campo in dados_validados.keys()])
+        valores = list(dados_validados.values())
+        valores.append(codigo)
+
+        cursor.execute(
+            f"UPDATE tb_instituicao SET {campos_update} WHERE codigo = ?",
+            valores
+        )
 
         conn.commit()
-        logger.info("Instituição atualizada com sucesso.")
+        logger.info(f"Institution {codigo} atualizada com sucesso.")
 
         return jsonify({"mensagem": "Instituição atualizada"}), 200
 
     except Exception as e:
-        logger.error(f"Erro ao atualizar: {e}")
+        logger.error(f"Erro ao atualizar instituição: {e}")
         return jsonify({"erro": "Erro interno ao atualizar"}), 500
 
     finally:
@@ -177,6 +231,27 @@ def deleteInstituicao(codigo):
     finally:
         conn.close()
 
+
+@app.get("/instituicoesensino/ranking/<ano>")
+def ranking(ano):
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM tb_instituicao
+        WHERE nu_ano_censo = ?
+        ORDER BY qt_mat_total DESC
+        LIMIT 10;
+    """, (ano,))
+
+    registros = cursor.fetchall()
+
+    lista = [dict(linha) for linha in registros]
+
+    logger.info("Requisição realizada com sucesso.")
+    return jsonify(lista), 200
 
 # === End Instituições ===
 if __name__ == '__main__':
