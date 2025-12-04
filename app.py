@@ -8,10 +8,7 @@ from helpers.database import get_conn
 
 app = Flask(__name__)
 
-DATABASE = "censoescolar.db"
 
-
-# Rota inicial
 @app.get("/")
 def index():
     return '{"versao":"2.0.0"}', 200
@@ -30,7 +27,8 @@ def getInstituicoesEnsinoCSV():
 
     offset = (pagina - 1) * tamanho
 
-    conn, cursor = get_conn()
+    conn = get_conn()
+    cursor = conn.cursor()
 
     cursor.execute("SELECT COUNT(*) as total FROM tb_instituicao")
     total = cursor.fetchone()["total"]
@@ -46,73 +44,18 @@ def getInstituicoesEnsinoCSV():
 
 @app.get("/instituicoesensino/<codigo>")
 def getInstituicaoByCodigo(codigo: str):
-    conn, cursor = get_conn()
-    cursor.execute("""
-        SELECT
-            codigo,
-            nome,
-            no_entidade,
-            co_entidade,
-            co_regiao,
-            no_regiao,
-            co_uf,
-            sg_uf,
-            co_municipio,
-            no_mesorregiao,
-            co_mesorregiao,
-            no_microrregiao,
-            co_microrregiao,
-            nu_ano_censo,
-            qt_mat_bas,
-            qt_mat_prof,
-            qt_mat_eja,
-            qt_mat_esp,
-            qt_mat_fund,
-            qt_mat_inf,
-            qt_mat_med,
-            qt_mat_zr_na,
-            qt_mat_zr_rur,
-            qt_mat_zr_urb,
-            qt_mat_total
-        FROM tb_instituicao
-        WHERE codigo = ?
-    """, (codigo,))
+    conn = get_conn()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM tb_instituicao WHERE codigo = ? ", (codigo,))
     linha = cursor.fetchone()
 
     if linha is None:
         logger.info("Falha na requisição: instituição não localizada...")
         return jsonify({"erro": "Instituição não encontrada"}), 404
     
-    instituicao = {
-        "codigo": linha[0],
-        "nome": linha[1],
-        "no_entidade": linha[2],
-        "co_entidade": linha[3],
-        "co_regiao": linha[4],
-        "no_regiao": linha[5],
-        "co_uf": linha[6],
-        "sg_uf": linha[7],
-        "co_municipio": linha[8],
-        "no_mesorregiao": linha[9],
-        "co_mesorregiao": linha[10],
-        "no_microrregiao": linha[11],
-        "co_microrregiao": linha[12],
-        "nu_ano_censo": linha[13],
-        "qt_mat_bas": linha[14],
-        "qt_mat_prof": linha[15],
-        "qt_mat_eja": linha[16],
-        "qt_mat_esp": linha[17],
-        "qt_mat_fund": linha[18],
-        "qt_mat_inf": linha[19],
-        "qt_mat_med": linha[20],
-        "qt_mat_zr_na": linha[21],
-        "qt_mat_zr_rur": linha[22],
-        "qt_mat_zr_urb": linha[23],
-        "qt_mat_total": linha[24],
-    }
-
     logger.info("Requisição realizada com sucesso.")
-    return jsonify(instituicao), 200
+    return jsonify(dict(linha)), 200
 
 
 @app.post("/instituicoesensino")
@@ -133,7 +76,8 @@ def addInstituicao():
         logger.warning(f"Erro de validação: {err.messages}")
         return jsonify({"erro": err.messages}), 400
 
-    conn, cursor = get_conn()
+    conn = get_conn()
+    cursor = conn.cursor()
 
     try:
         cursor.execute("""
@@ -202,7 +146,8 @@ def updateInstituicao(codigo):
         logger.warning(f"Erro de validação no PUT: {err.messages}")
         return jsonify({"erro": "Dados inválidos", "detalhes": err.messages}), 400
 
-    conn, cursor = get_conn()
+    conn = get_conn()
+    cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM tb_instituicao WHERE codigo = ?", (codigo,))
     registro = cursor.fetchone()
@@ -249,7 +194,8 @@ def updateInstituicao(codigo):
 
 @app.delete("/instituicoesensino/<codigo>")
 def deleteInstituicao(codigo):
-    conn, cursor = get_conn()
+    conn = get_conn()
+    cursor = conn.cursor()
 
     cursor.execute("SELECT id FROM tb_instituicao WHERE codigo = ?", (codigo,))
     linha = cursor.fetchone()
@@ -272,7 +218,8 @@ def deleteInstituicao(codigo):
 
 @app.get("/instituicoesensino/ranking/<ano>")
 def ranking(ano):
-    conn, cursor = get_conn()
+    conn = get_conn()
+    cursor = conn.cursor()
 
     cursor.execute("""
         SELECT *
