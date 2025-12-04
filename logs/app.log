@@ -1,0 +1,178 @@
+2025-12-02 15:55:23,291 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-12-02 15:55:23,291 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-02 15:55:23,324 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:55:24,059 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:55:24,083 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:56:07,157 - app - INFO - Requisição PUT para atualizar instituição 11000023
+2025-12-02 15:56:07,210 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:07] "[35m[1mPUT /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 15:56:08,142 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:08] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 15:56:08,182 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:08] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 15:56:08,306 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:08] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=4Ef4h2tIBq9nKOEpYpp4 HTTP/1.1" 200 -
+2025-12-02 15:56:11,009 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:11] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 15:56:11,842 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:11] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 15:56:11,842 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:11] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 15:56:12,102 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:56:12] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=4Ef4h2tIBq9nKOEpYpp4 HTTP/1.1[0m" 304 -
+2025-12-02 15:56:34,757 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 15:56:34,860 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:56:35,649 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:56:35,658 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:56:36,743 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 15:56:36,867 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:56:37,662 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:56:37,677 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:56:47,966 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\helpers\\database\\__init__.py', reloading
+2025-12-02 15:56:48,058 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:56:48,788 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:56:48,788 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:57:00,075 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\helpers\\database\\__init__.py', reloading
+2025-12-02 15:57:00,228 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:57:01,058 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:57:01,058 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:57:01,532 - app - INFO - Requisição realizada com sucesso.
+2025-12-02 15:57:01,532 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:57:01] "GET /instituicoesensino/11000023 HTTP/1.1" 200 -
+2025-12-02 15:59:08,867 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 15:59:09,086 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:59:09,924 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:59:09,942 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:59:13,056 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 15:59:13,175 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:59:14,041 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:59:14,057 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:59:17,186 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 15:59:17,304 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 15:59:18,055 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 15:59:18,055 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 15:59:24,139 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:59:24] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 15:59:25,126 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:59:25] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 15:59:25,149 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:59:25] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 15:59:25,227 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 15:59:25] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=Z03BaBIpLIlJjbCd4tGj HTTP/1.1" 200 -
+2025-12-02 16:00:22,503 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:00:22,605 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:00:23,454 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:00:23,471 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:00:31,688 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:00:31,788 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:00:32,620 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:00:32,638 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:01:02,339 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\helpers\\database\\__init__.py', reloading
+2025-12-02 16:01:02,455 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:01:03,439 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:01:03,471 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:01:04,555 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:01:04,693 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:01:05,456 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:01:05,473 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:01:14,736 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:01:14,836 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:01:15,619 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:01:15,635 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:01:16,719 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:01:16,820 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:01:17,552 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:01:17,571 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:01:21,051 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:01:21] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 16:01:22,063 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:01:22] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 16:01:22,074 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:01:22] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 16:01:22,225 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:01:22] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=61WQI8soEeuMTGBtKkdW HTTP/1.1" 200 -
+2025-12-02 16:02:28,184 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:02:28,378 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:02:29,184 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:02:29,201 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:02:29,267 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:29] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 16:02:30,401 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:30] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 16:02:30,417 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:30] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 16:02:30,486 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:30] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=IiUgFm9S7DNDO43aLuWv HTTP/1.1" 200 -
+2025-12-02 16:02:44,639 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:02:44,734 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:02:45,547 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:02:45,562 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:02:50,717 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:02:50,841 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:02:51,650 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:02:51,650 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:02:51,817 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:51] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 16:02:52,770 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:52] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 16:02:52,783 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:52] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 16:02:52,817 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:02:52] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=l5huXeq3hEwNoaEnMsof HTTP/1.1" 200 -
+2025-12-02 16:03:57,015 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\helpers\\database\\__init__.py', reloading
+2025-12-02 16:03:57,132 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:03:58,051 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:03:58,062 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:04:13,472 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:04:13,567 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:04:14,437 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:04:14,450 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:04:15,880 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:15] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 16:04:16,776 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:16] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 16:04:16,782 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:16] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 16:04:16,864 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:16] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=Vq5ReVAerBxst7gnifZV HTTP/1.1" 200 -
+2025-12-02 16:04:38,055 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:04:38,207 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:04:38,931 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:04:38,931 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:04:41,031 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:04:41,147 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:04:41,884 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:04:41,893 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:04:43,105 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:43] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 16:04:43,998 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:43] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 16:04:44,018 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:44] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 16:04:44,095 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:04:44] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=RgkBnAYsJrThtd2FAbzX HTTP/1.1" 200 -
+2025-12-02 16:05:08,521 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:05:08,631 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:05:09,448 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:05:09,465 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:05:30,988 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:05:31,081 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:05:31,814 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:05:31,832 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:05:34,130 - app - INFO - Requisição realizada com sucesso.
+2025-12-02 16:05:34,130 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:05:34] "GET /instituicoesensino/11000023 HTTP/1.1" 200 -
+2025-12-02 16:05:49,341 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:05:49,512 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:05:50,230 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:05:50,247 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:06:22,045 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:06:22,162 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:06:22,962 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:06:22,981 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:06:25,279 - app - INFO - Requisição realizada com sucesso.
+2025-12-02 16:06:25,303 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:06:25] "[35m[1mGET /instituicoesensino/11000023 HTTP/1.1[0m" 500 -
+2025-12-02 16:06:26,281 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:06:26] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-12-02 16:06:26,288 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:06:26] "[36mGET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-12-02 16:06:26,368 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:06:26] "GET /instituicoesensino/11000023?__debugger__=yes&cmd=resource&f=console.png&s=dmHbsgCHrJsn3FJ3Llga HTTP/1.1" 200 -
+2025-12-02 16:06:46,548 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:06:46,680 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:06:47,579 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:06:47,602 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:06:47,779 - app - INFO - Requisição realizada com sucesso.
+2025-12-02 16:06:47,779 - werkzeug - INFO - 127.0.0.1 - - [02/Dec/2025 16:06:47] "GET /instituicoesensino/11000023 HTTP/1.1" 200 -
+2025-12-02 16:07:24,525 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:07:24,672 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:07:25,446 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:07:25,461 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:07:31,648 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:07:31,755 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:07:32,629 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:07:32,646 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:07:50,084 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:07:50,179 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:07:50,944 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:07:50,964 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:08:10,427 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:08:10,527 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:08:11,337 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:08:11,341 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:09:26,083 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:09:26,192 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:09:26,977 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:09:26,995 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:09:32,164 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:09:32,291 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:09:33,116 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:09:33,132 - werkzeug - INFO -  * Debugger PIN: 123-955-217
+2025-12-02 16:10:51,596 - werkzeug - INFO -  * Detected change in 'C:\\Users\\gamer\\Desktop\\ProjetoPW2\\CensoEscolarAPI\\app.py', reloading
+2025-12-02 16:10:51,715 - werkzeug - INFO -  * Restarting with stat
+2025-12-02 16:10:52,441 - werkzeug - WARNING -  * Debugger is active!
+2025-12-02 16:10:52,459 - werkzeug - INFO -  * Debugger PIN: 123-955-217

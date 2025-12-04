@@ -3,13 +3,13 @@ import sqlite3
 import math
 from logging_config import logger
 from marshmallow import ValidationError
-from models.schemas.instituicao_schema import InstituicaoUpdateSchema, InstituicaoCreateSchema
+from helpers.schemas.instituicao_schema import InstituicaoUpdateSchema, InstituicaoCreateSchema
+from helpers.database import get_conn
 
 app = Flask(__name__)
+
 DATABASE = "censoescolar.db"
 
-def get_conn():
-    return sqlite3.connect(DATABASE)
 
 # Rota inicial
 @app.get("/")
@@ -30,9 +30,7 @@ def getInstituicoesEnsinoCSV():
 
     offset = (pagina - 1) * tamanho
 
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    conn, cursor = get_conn()
 
     cursor.execute("SELECT COUNT(*) as total FROM tb_instituicao")
     total = cursor.fetchone()["total"]
@@ -42,26 +40,79 @@ def getInstituicoesEnsinoCSV():
     cursor.execute("SELECT * FROM tb_instituicao LIMIT ? OFFSET ?", (tamanho, offset))
     registros = [dict(row) for row in cursor.fetchall()]
 
-    conn.close()
     logger.info("Requisição realizada com sucesso.")
     return jsonify(registros), 200
 
 
 @app.get("/instituicoesensino/<codigo>")
 def getInstituicaoByCodigo(codigo: str):
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, codigo, nome, co_uf, co_municipio, qt_mat_bas, qt_mat_prof, qt_mat_eja, qt_mat_esp, qt_mat_fund, qt_mat_inf, qt_mat_med, qt_mat_zr_na, qt_mat_zr_rur, qt_mat_zr_urb FROM tb_instituicao WHERE codigo = ?", (codigo,))
+    conn, cursor = get_conn()
+    cursor.execute("""
+        SELECT
+            codigo,
+            nome,
+            no_entidade,
+            co_entidade,
+            co_regiao,
+            no_regiao,
+            co_uf,
+            sg_uf,
+            co_municipio,
+            no_mesorregiao,
+            co_mesorregiao,
+            no_microrregiao,
+            co_microrregiao,
+            nu_ano_censo,
+            qt_mat_bas,
+            qt_mat_prof,
+            qt_mat_eja,
+            qt_mat_esp,
+            qt_mat_fund,
+            qt_mat_inf,
+            qt_mat_med,
+            qt_mat_zr_na,
+            qt_mat_zr_rur,
+            qt_mat_zr_urb,
+            qt_mat_total
+        FROM tb_instituicao
+        WHERE codigo = ?
+    """, (codigo,))
     linha = cursor.fetchone()
-    conn.close()
 
     if linha is None:
         logger.info("Falha na requisição: instituição não localizada...")
         return jsonify({"erro": "Instituição não encontrada"}), 404
     
-    instituicoes = { "id": linha[0], "codigo": linha[1], "nome": linha[2], "co_uf": linha[3], "co_municipio": linha[4], "qt_mat_bas": linha[5], "qt_mat_prof": linha[6], "qt_mat_eja": linha[7], "qt_mat_esp": linha[8], "qt_mat_fund": linha[9], "qt_mat_inf": linha[10], "qt_mat_med": linha[11], "qt_mat_zr_na": linha[12], "qt_mat_zr_rur": linha[13], "qt_mat_zr_urb": linha[14]}
+    instituicao = {
+        "codigo": linha[0],
+        "nome": linha[1],
+        "no_entidade": linha[2],
+        "co_entidade": linha[3],
+        "co_regiao": linha[4],
+        "no_regiao": linha[5],
+        "co_uf": linha[6],
+        "sg_uf": linha[7],
+        "co_municipio": linha[8],
+        "no_mesorregiao": linha[9],
+        "co_mesorregiao": linha[10],
+        "no_microrregiao": linha[11],
+        "co_microrregiao": linha[12],
+        "nu_ano_censo": linha[13],
+        "qt_mat_bas": linha[14],
+        "qt_mat_prof": linha[15],
+        "qt_mat_eja": linha[16],
+        "qt_mat_esp": linha[17],
+        "qt_mat_fund": linha[18],
+        "qt_mat_inf": linha[19],
+        "qt_mat_med": linha[20],
+        "qt_mat_zr_na": linha[21],
+        "qt_mat_zr_rur": linha[22],
+        "qt_mat_zr_urb": linha[23],
+        "qt_mat_total": linha[24],
+    }
+
     logger.info("Requisição realizada com sucesso.")
-    return jsonify(instituicoes), 200
+    return jsonify(instituicao), 200
 
 
 @app.post("/instituicoesensino")
@@ -82,8 +133,7 @@ def addInstituicao():
         logger.warning(f"Erro de validação: {err.messages}")
         return jsonify({"erro": err.messages}), 400
 
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
+    conn, cursor = get_conn()
 
     try:
         cursor.execute("""
@@ -130,7 +180,6 @@ def addInstituicao():
             dados_validados["qt_mat_total"]
         ))
 
-        conn.commit()
         novo_id = cursor.lastrowid
 
         logger.info("Instituição criada com sucesso.")
@@ -139,9 +188,6 @@ def addInstituicao():
     except Exception as e:
         logger.error(f"Erro ao inserir: {e}")
         return jsonify({"erro": "Erro interno ao inserir."}), 500
-
-    finally:
-        conn.close()
         
 
 @app.put("/instituicoesensino/<codigo>")
@@ -156,15 +202,13 @@ def updateInstituicao(codigo):
         logger.warning(f"Erro de validação no PUT: {err.messages}")
         return jsonify({"erro": "Dados inválidos", "detalhes": err.messages}), 400
 
-    conn = get_conn()
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    conn, cursor = get_conn()
 
     cursor.execute("SELECT * FROM tb_instituicao WHERE codigo = ?", (codigo,))
     registro = cursor.fetchone()
 
     if registro is None:
-        conn.close()
+        logger.info("Instituição não encontrada")
         return jsonify({"erro": "Instituição não encontrada"}), 404
 
     registro_dict = dict(registro)
@@ -201,20 +245,17 @@ def updateInstituicao(codigo):
         logger.error(f"Erro ao atualizar instituição: {e}")
         return jsonify({"erro": "Erro interno ao atualizar"}), 500
 
-    finally:
-        conn.close()
 
 
 @app.delete("/instituicoesensino/<codigo>")
 def deleteInstituicao(codigo):
-    conn = sqlite3.connect(DATABASE)
-    cursor = conn.cursor()
+    conn, cursor = get_conn()
 
     cursor.execute("SELECT id FROM tb_instituicao WHERE codigo = ?", (codigo,))
     linha = cursor.fetchone()
 
     if linha is None:
-        conn.close()
+        logger.info("Instituição não encontrada.")
         return jsonify({"erro": "Instituição não encontrada"}), 404
 
     try:
@@ -228,15 +269,10 @@ def deleteInstituicao(codigo):
         logger.error(f"Erro ao deletar: {e}")
         return jsonify({"erro": "Erro interno ao remover"}), 500
 
-    finally:
-        conn.close()
-
 
 @app.get("/instituicoesensino/ranking/<ano>")
 def ranking(ano):
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    conn, cursor = get_conn()
 
     cursor.execute("""
         SELECT *
@@ -253,7 +289,7 @@ def ranking(ano):
     logger.info("Requisição realizada com sucesso.")
     return jsonify(lista), 200
 
-# === End Instituições ===
+
 if __name__ == '__main__':
     
     app.run(debug=True)
